@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <title>Proj-E</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" id="bootstrap-css" rel="stylesheet" />
+    <link href="/xhrExercise/res/B.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        ;
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+        ;
+    </script>
+    <script type="text/javascript" src="res/e.js"></script>
+</head>
+
+<body>
+    <div style="margin-top: 40px" class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="dashHead">
+                    	<strong> DASHBOARD</strong>                    	
+                    </div>                 
+                    <div class="panel-heading" id="primeHead" style="display:none">
+                        <a role="button" class="btn btn-sm btn-link" href = "#" onclick ="showDash();return false"><span class="glyphicon glyphicon-triangle-left" /> Dashboard <span class="glyphicon glyphicon-triangle-left" /></a><strong> Prime Number Finder</strong>
+                    </div>                    
+                    <div class="panel-heading" id="sisHead" style="display:none">
+                        <a role="button" class="btn btn-sm btn-link" href = "#" onclick ="showDash();return false"><span class="glyphicon glyphicon-triangle-left" /> Dashboard <span class="glyphicon glyphicon-triangle-left" /></a><strong>SIS Report Generator</strong>
+                    </div>
+
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="center-block"><img alt="" src="res/Dash.png" class="profile-img" /></div>
+                        </div>
+
+                        <!-- dash -->
+                        <div class="row" id="dashDiv" class="view">
+                            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                                <div class="form-group">
+
+                                        <div class="btn btn-lg btn-primary btn-block"> <a href = "#" onclick ="showPrime();return false"> Primer Number Finder</a></div>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                      <div class="btn btn-lg btn-primary btn-block"> <a href = "#" onclick ="showSis();return false"> SIS Report Generator</a></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    	<!-- sis -->
+                    	<div id="sisDiv" class="view" style="display:none">
+	                        <form role="form" id="sisForm" onsubmit="sis(this); return false;" >
+	                            <fieldset>
+	                                <div class="row">
+	                                    <div class="col-sm-12 col-md-12 ">
+	                                        <div class="form-group">
+	                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-education"><span/></i></span>
+	                                                <input type="text" value="" id="prefix" placeholder="Name prefix ..." class="form-control" />
+	                                            </div>
+	                                        </div>
+	                                        <div class="form-group">
+	                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-step-forward"><span/></i></span>
+	                                                <input type="text" value="" id="minGpa" placeholder="Minimum GPA" class="form-control" />
+	                                            </div>
+	                                        </div>
+	                                        <div class="form-group">
+	                                            <div class="input-group">
+	                                                <select id="sortBy" name="sortBy">
+	                                                    <option selected="any" value="NONE">Select One:</option>
+	                                                    <option value="SURNAME">Last Name</option>
+	                                                    <option value="MAJOR">Major</option>
+	                                                    <option value="COURSES">Number of Courses</option>
+	                                                    <option value="GPA">GPA</option>
+	                                                </select>
+	                                            </div>
+	                                        </div>
+	                                        <div class="form-group">
+	                                            <input value="Generate Report" class="btn btn-lg btn-primary btn-block" type="submit" />
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="row">
+										<div class="col-sm-12 col-md-12">
+											<p class="text-center" id="sisMessage"></p>
+											<table style="margin:auto;" border="1">
+	                                       		<tbody id="sisTable">
+	                                       		</tbody>
+                                        	</table>
+										</div>
+	                                </div>
+	                            </fieldset>
+	                        </form>
+                        </div>
+
+                        <!-- prime -->
+                        <div id="primeDiv" style="display:none" class="view">
+                        	<form role="form" onsubmit="prime(this); return false;">
+                            <fieldset>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                                        <div class="form-group">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-chevron-right"><span/></i></span>
+                                                <input value="" type="text" id="min" placeholder="Larger than ... " class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-chevron-left"><span/></i></span>
+                                                <input value="" type="text" id="max" placeholder="But not larger than ..." class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input value="Find" class="btn btn-lg btn-primary btn-block" type="submit" />
+                                        </div>
+                                        
+                                        <div id="primeResult"></div>
+                                        
+									</div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
