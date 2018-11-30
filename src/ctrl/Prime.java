@@ -26,6 +26,7 @@ public class Prime extends HttpServlet {
 		Engine engine = Engine.getInstance();
 		Writer out = response.getWriter();
 		response.setContentType("text/json");
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		
 		
 			System.out.println("execute Prime.do calc");

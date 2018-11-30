@@ -33,6 +33,7 @@ public class Sis extends HttpServlet {
 			
 			Writer out = response.getWriter();
 			response.setContentType("text/json");
+			response.addHeader("Access-Control-Allow-Origin", "*");
 			
 			Engine engine = Engine.getInstance();
 			try {
